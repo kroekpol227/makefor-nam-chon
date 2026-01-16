@@ -5,174 +5,200 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>For My Little Sister 🌸</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Itim&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --primary-color: #74b9ff;
+      --secondary-color: #a1c4fd;
+      --text-color: #4a4a4a;
+      --soft-blue: #f0f7ff;
+    }
+
     * {
       box-sizing: border-box;
-      font-family: 'Kanit', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(180deg, #f0f7ff, #ffffff);
-      color: #444;
-      /* ล็อคการเลื่อนในตอนแรก */
-      overflow: hidden; 
+      font-family: 'Sarabun', sans-serif;
+      background: #ffffff;
+      color: var(--text-color);
+      overflow: hidden; /* ล็อคไว้จนกว่าจะใส่รหัส */
       height: 100%;
       cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size: 24px;'><text y='20'>🌤️</text></svg>"), auto;
     }
 
-    button, .btn, input, a {
-      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size: 24px;'><text y='20'>⭐</text></svg>"), pointer !important;
+    h1, h2, h3 {
+      font-family: 'Itim', cursive;
+      color: #2d3436;
+      margin-top: 0;
     }
 
     /* ===== LOCK SCREEN ===== */
     .lock-screen {
       position: fixed;
       inset: 0;
-      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      color: white;
-      text-align: center;
-      padding: 20px;
+      transition: opacity 0.8s ease, visibility 0.8s;
     }
 
     .lock-box {
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 40px 30px;
-      border-radius: 28px;
-      max-width: 320px;
-      width: 100%;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 45px 30px;
+      border-radius: 35px;
+      max-width: 340px;
+      width: 85%;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
     }
+
+    .lock-box h2 { color: white; font-size: 1.8rem; margin-bottom: 8px; }
+    .lock-box p { color: white; font-weight: 300; margin-bottom: 25px; opacity: 0.9; }
 
     .lock-box input {
       width: 100%;
-      padding: 14px;
-      border-radius: 14px;
+      padding: 15px;
+      border-radius: 15px;
       border: none;
-      margin-bottom: 16px;
-      font-size: 1.1rem;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
       text-align: center;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       outline: none;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--primary-color);
     }
 
     .lock-box button {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border-radius: 999px;
       border: none;
       background: white;
-      color: #74b9ff;
-      font-size: 1rem;
+      color: var(--primary-color);
+      font-size: 1.1rem;
       font-weight: 600;
+      font-family: 'Itim', cursive;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
 
-    .error { margin-top: 12px; font-size: 0.9rem; display: none; }
+    .lock-box button:active { transform: scale(0.95); }
+    .error { color: #ff7675; margin-top: 12px; font-size: 0.9rem; display: none; background: rgba(255,255,255,0.8); border-radius: 8px; padding: 5px; }
 
     /* ===== MAIN CONTENT ===== */
-    #mainContent { 
-      display: none; 
-    }
+    #mainContent { display: none; opacity: 0; transition: opacity 1s ease; }
 
     .hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
       color: white;
       text-align: center;
-      padding: 80px 20px;
+      padding: 40px 25px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
-    .hero h1 { font-size: 2.2rem; margin-bottom: 20px; }
-    .hero p { font-size: 1.1rem; line-height: 1.8; max-width: 520px; }
+    .hero h1 { font-size: 2.6rem; color: white; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .hero p { font-size: 1.15rem; line-height: 1.8; max-width: 500px; font-weight: 300; }
 
-    .btn {
+    .btn-scroll {
       margin-top: 30px;
       background: white;
-      color: #74b9ff;
+      color: var(--primary-color);
       border: none;
-      padding: 14px 36px;
+      padding: 16px 36px;
       border-radius: 999px;
-      font-size: 1rem;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      font-size: 1.1rem;
+      font-family: 'Itim', cursive;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
+
+    .container { padding: 20px 0; }
 
     .card {
       max-width: 90%;
-      width: 600px;
-      margin: 50px auto;
+      width: 550px;
+      margin: 40px auto;
       background: white;
-      padding: 35px 25px;
-      border-radius: 28px;
-      box-shadow: 0 15px 35px rgba(116, 185, 255, 0.15);
+      padding: 40px 30px;
+      border-radius: 35px;
+      box-shadow: 0 15px 45px rgba(116, 185, 255, 0.15);
       text-align: center;
+      border: 1px solid #f0f7ff;
     }
 
-    .card.blue { background: #f0f7ff; }
-    .card h2 { color: #0984e3; margin-bottom: 20px; }
-    .card p { font-size: 1.05rem; line-height: 1.8; white-space: pre-line; }
+    .card.blue { background: var(--soft-blue); }
+    .card h2 { color: #0984e3; margin-bottom: 20px; font-size: 1.7rem; }
+    .card p { font-size: 1.1rem; line-height: 1.9; color: #555; }
 
     .message-img {
       width: 100%;
-      max-width: 240px;
-      aspect-ratio: 1 / 1;
+      max-width: 220px;
+      aspect-ratio: 1/1;
       object-fit: cover;
+      margin: 25px auto;
       display: block;
-      margin: 20px auto;
       clip-path: path("M120 220 C120 220 20 150 20 80 C20 35 65 15 100 45 C120 65 120 65 140 45 C175 15 220 35 220 80 C220 150 120 220 120 220 Z");
       animation: floatHeart 3s ease-in-out infinite;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     @keyframes floatHeart {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-12px) scale(1.03); }
     }
 
     .video-wrapper {
       position: relative;
-      padding-top: 56.25%; 
-      border-radius: 16px;
+      padding-top: 56.25%;
+      border-radius: 25px;
       overflow: hidden;
       background: #000;
-      margin-top: 15px;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     .video-wrapper video {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
+      top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
     }
 
-    footer { text-align: center; padding: 40px 20px; color: #74b9ff; }
+    footer { 
+      text-align: center; 
+      padding: 60px 20px; 
+      color: var(--secondary-color); 
+      font-family: 'Itim', cursive;
+      font-size: 1.2rem;
+    }
 
+    /* Floating Background Elements */
     .icon-bg {
       position: fixed;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.6;
-      pointer-events: none;
+      bottom: -30px;
       z-index: 1;
+      opacity: 0.5;
+      pointer-events: none;
+      animation: floatUp 6s linear infinite;
     }
 
     @keyframes floatUp {
-      to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.6; }
+      100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
@@ -184,8 +210,8 @@
       <h2>Secret for you 🩵</h2>
       <p>รหัสลับจากพี่ชาย</p>
       <input type="password" id="code" placeholder="ใส่รหัสผ่านนะ" inputmode="numeric">
-      <button onclick="checkCode()">เปิดดูครับ</button>
-      <div class="error" id="errorMsg">รหัสไม่ถูกนะคนเก่ง ลองใหม่นะครับ</div>
+      <button onclick="checkCode()">เปิดกล่องความลับ ✨</button>
+      <div class="error" id="errorMsg">รหัสไม่ถูกนะคนเก่ง ลองใหม่นะคะ</div>
     </div>
   </div>
 
@@ -193,48 +219,55 @@
     <section class="hero">
       <h1>ถึง น้องสาวคนเก่ง! 👧🏻</h1>
       <p>
-        วันนี้ใช้ชีวิตมาทั้งวัน เหนื่อยไหมครับ?
-        ได้ยิ้มบ้างหรือเปล่า ท้องฟ้าสดใสไหม ได้ฟังเพลงที่ชอบยัง หรือมีใครใจร้ายใส่ไหม 
-        พี่แค่อยากแวะมาบอกว่า ไม่ว่าวันนี้จะเจออะไรมา
-        เก่งมากแล้วนะที่ผ่านมาได้จนถึงตอนนี้
+        วันนี้ใช้ชีวิตมาทั้งวัน เหนื่อยไหมครับ?<br>
+        ได้ยิ้มบ้างหรือเปล่า ท้องฟ้าสดใสไหม ได้ฟังเพลงที่ชอบยัง หรือมีใครใจร้ายใส่ไหม <br><br>
+        พี่แค่อยากแวะมาบอกว่า ไม่ว่าวันนี้จะเจออะไรมา<br>
+        <b>เก่งมากแล้วนะที่ผ่านมาได้จนถึงตอนนี้</b><br>
         พักผ่อนเยอะๆ นะครับ
       </p>
-      <button class="btn" onclick="scrollDown()">พี่มีอะไรจะบอกอีก</button>
+      <button class="btn-scroll" onclick="scrollDown()">พี่มีอะไรจะบอกอีกนิด ◡̈</button>
     </section>
 
-    <section class="card">
-      <h2>ภูมิใจในตัวน้องเสมอ</h2>
-      <img src="img/2.jpg" alt="กำลังใจ" class="message-img">
-      <p>ต่อให้โลกภายนอกจะวุ่นวายแค่ไหน
-      แต่อย่างน้อยที่ตรงนี้ พี่ชายคนนี้ภูมิใจในตัวน้ำเสมอ
-      สู้ๆ กับทุกวันนะ มีความสุขมากๆ อย่าลืมใจดีกับตัวเองให้มากๆ ด้วยล่ะ 
-    และขอบคุณสำหรับความห่วงใยและกำลังใจ ให้พี่ชายคนนี้เสมอครับ  😊</p>
-    เหมือนคนที่รู้จักกันมานานมากๆ ทั้งๆ ที่ไม่เคยได้นั่งคุยกันเลยด้วยซ้ำ
-    </section>
+    <div class="container">
+      <section class="card">
+        <h2>ภูมิใจในตัวน้องเสมอ</h2>
+        <img src="img/2.jpg" alt="กำลังใจ" class="message-img">
+        <p>
+          ต่อให้โลกภายนอกจะวุ่นวายแค่ไหน<br>
+          แต่อย่างน้อยที่ตรงนี้ พี่ชายคนนี้ภูมิใจในตัว<b>น้ำ</b>เสมอ<br><br>
+          สู้ๆ กับทุกวันนะ มีความสุขมากๆ <br>อย่าลืมใจดีกับตัวเองให้มากๆ ด้วยล่ะ <br>
+          และขอบคุณสำหรับความห่วงใยให้พี่ชายคนนี้เสมอครับ 😊
+        </p>
+        <p style="font-size: 0.9rem; color: #999; margin-top: 15px;">
+          เหมือนคนที่รู้จักกันมานานมากๆ ทั้งๆ ที่ไม่เคยได้นั่งคุยกันเลยด้วยซ้ำ
+        </p>
+      </section>
 
-    <section class="card blue">
-      <h2>ถ้าวันไหนเหนื่อยมาก...</h2>
-      <p>
-        อนุญาตให้ตัวเองพักได้นะ ไม่ต้องรีบโตก็ได้
-        ใช้ชีวิตช้าลงบ้าง กินของอร่อยที่อยากกิน
-        และถ้าวันไหนอยากระบายหรืออยากให้ใครสักคนรับฟัง
-        ปรึกษาได้ตลอดเลยนะ พี่พร้อมซัพพอร์ตเสมอครับ 
-      </p>
-    </section>
+      <section class="card blue">
+        <h2>ถ้าวันไหนเหนื่อยมาก...</h2>
+        <p>
+          อนุญาตให้ตัวเองพักได้นะ ไม่ต้องรีบโตก็ได้<br>
+          ใช้ชีวิตช้าลงบ้าง กินของอร่อยที่อยากกิน<br>
+          และถ้าวันไหนอยากระบายหรืออยากให้ใครสักคนรับฟัง<br>
+          <b>ปรึกษาได้ตลอดเลยนะ พี่พร้อมซัพพอร์ตเสมอครับ</b>
+        </p>
+      </section>
 
-    <section class="card">
-      <h2>ฟังเพลงนี้แล้วยิ้มเยอะๆนะ ความหมายดีมาก </h2>
-      <div class="video-wrapper">
-        <video 
-          id="myVideo"
-          src="img/12.mp4" 
-          controls 
-          playsinline 
-          webkit-playsinline
-          preload="auto">
-        </video>
-      </div>
-    </section>
+      <section class="card">
+        <h2>ฟังเพลงนี้แล้วยิ้มเยอะๆนะ</h2>
+        <p style="font-size: 0.95rem; margin-bottom: 10px;">ความหมายดีมาก พี่ตั้งใจเลือกมาให้</p>
+        <div class="video-wrapper">
+          <video 
+            id="myVideo"
+            src="img/12.mp4" 
+            controls 
+            playsinline 
+            webkit-playsinline
+            preload="auto">
+          </video>
+        </div>
+      </section>
+    </div>
 
     <footer>จากพี่ชายที่แสนดี 😊</footer>
   </div>
@@ -247,29 +280,32 @@
       const mainContent = document.getElementById("mainContent");
 
       if (code === "070942") {
-        // 1. ซ่อนหน้าล็อค และแสดงเนื้อหา
-        lockScreen.style.display = "none";
-        mainContent.style.display = "block";
-
-        // 2. ปลดล็อคการเลื่อนหน้าจอ (สำคัญ!)
-        document.body.style.overflow = "auto";
-        document.documentElement.style.overflow = "auto";
-        document.body.style.height = "auto";
-        
-        // 3. จัดการวิดีโอ
-        if(video) {
-          video.load();
-          const playPromise = video.play();
-          if (playPromise !== undefined) {
-            playPromise.then(_ => {
-              console.log("Playing success");
-            }).catch(error => {
-              console.log("Autoplay blocked");
-            });
+        // อนิเมชั่นตอนปลดล็อค
+        lockScreen.style.opacity = "0";
+        setTimeout(() => {
+          lockScreen.style.display = "none";
+          mainContent.style.display = "block";
+          setTimeout(() => { mainContent.style.opacity = "1"; }, 50);
+          
+          document.body.style.overflow = "auto";
+          document.documentElement.style.overflow = "auto";
+          document.body.style.height = "auto";
+          
+          if(video) {
+            video.load();
+            video.play().catch(e => console.log("Autoplay blocked"));
           }
-        }
+        }, 800);
       } else {
-        document.getElementById("errorMsg").style.display = "block";
+        const error = document.getElementById("errorMsg");
+        error.style.display = "block";
+        // ใส่สั่นเบาๆ เมื่อรหัสผิด
+        document.querySelector('.lock-box').animate([
+          { transform: 'translateX(-5px)' },
+          { transform: 'translateX(5px)' },
+          { transform: 'translateX(-5px)' },
+          { transform: 'translateX(0)' }
+        ], { duration: 300 });
       }
     }
 
@@ -280,24 +316,24 @@
       });
     }
 
-    // สร้างไอคอนลอย (ดาว ก้อนเมฆ หัวใจขาว)
-    setInterval(() => {
-      const icons = ["⭐", "☁️", "🤍", "✨", "🌸"];
+    // สร้างไอคอนลอยแบบ Random
+    function createIcon() {
+      const icons = ["⭐", "☁️", "🤍", "✨", "🌸", "🧸", "🍭"];
       const icon = document.createElement("div");
       icon.className = "icon-bg";
       icon.innerHTML = icons[Math.floor(Math.random() * icons.length)];
       icon.style.left = Math.random() * 100 + "vw";
-      icon.style.position = "fixed";
-      icon.style.bottom = "-20px";
       icon.style.fontSize = Math.random() * 15 + 15 + "px";
-      icon.style.zIndex = "1";
-      icon.style.opacity = "0.6";
-      icon.style.pointerEvents = "none";
-      icon.style.animation = "floatUp 6s linear infinite";
+      
+      // สุ่มระยะเวลาการลอย
+      const duration = Math.random() * 3 + 4; 
+      icon.style.animationDuration = duration + "s";
       
       document.body.appendChild(icon);
-      setTimeout(() => icon.remove(), 6000);
-    }, 800);
+      setTimeout(() => icon.remove(), duration * 1000);
+    }
+
+    setInterval(createIcon, 600);
   </script>
 
 </body>
